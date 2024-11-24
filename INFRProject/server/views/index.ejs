@@ -1,6 +1,26 @@
-<%- include Partials/header.ejs%>
-<%- include Partials/main_nav.ejs%>
-    <!--Main content-->
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-<%- include Partials/footer.ejs%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+
+  <!-- Link to your styles.css file -->
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- Include header -->
+  <%- include('Partials/header') %>
+
+  <!-- Include main navigation -->
+  <%- include('Partials/main_nav') %>
+
+  <!-- Main content -->
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+
+  <!-- Include footer -->
+  <%- include('Partials/footer') %>
+
+</body>
+</html>
