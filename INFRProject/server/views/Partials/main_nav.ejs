@@ -1,61 +1,61 @@
 <!--NavBar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Workout App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <% if(title=="Workout Home") { %>
-              <a class="nav-link active" href="/home">
-            <% } else {%>
-              <a class="nav-link" href="/home">
-            <% } %>  
-            <i class="fa-solid fa-house-chimney-user"></i> Home</a>
-          </li>
-          <li class="nav-item">
-            <% if(title=="Workouts List") { %>
-              <a class="nav-link active" href="/workouts">
-            <% } else {%>
-              <a class="nav-link" href="/workouts">  
-            <% } %>       
-              <i class="fa-solid fa-dumbbell"></i> Workouts</a>
-          </li>
-          <li class="nav-item">
-            <% if(title=="Create Workout") { %>
-              <a class="nav-link active" href="/create">
-            <% } else {%>
-              <a class="nav-link" href="/create">
-            <% } %>    
-              <i class="fa-brands fa-plus-circle"></i> Create Workout</a>
-          </li>
-          <li class="nav-item">
-            <% if(title=="Edit Workout") { %>
-              <a class="nav-link active" href="/edit/:id">
-            <% } else {%> 
-              <a class="nav-link" href="/edit/:id">
-            <% } %>  
-                <i class="fa-solid fa-edit"></i> Edit Workout</a>
-          </li>
-          <li class="nav-item">
-            <% if(title=="Delete Workout") { %>
-              <a class="nav-link active" href="/delete/:id">
-            <% } else {%>
-              <a class="nav-link" href="/delete/:id">
-            <% } %>  
-            <i class="fa-solid fa-trash"></i> Delete Workout</a>
-          </li>
-          <li class="nav-item"></li>
-          <% if(title=="Contact Us") { %>
-            <a class="nav-link active" href="/contactus">
-          <% } else {%>  
-            <a class="nav-link" href="/contactus">
-          <% } %> 
-          <i class="fa-solid fa-address-card"></i> ContactUs</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Workout App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <% if(title=="Workout Home") { %>
+            <a class="nav-link active" href="/home">
+          <% } else {%>
+            <a class="nav-link" href="/home">
+          <% } %>  
+          <i class="fa-solid fa-house-chimney-user"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <% if(title=="Workouts List") { %>
+            <a class="nav-link active" href="/workouts">
+          <% } else {%>
+            <a class="nav-link" href="/workouts">  
+          <% } %>       
+            <i class="fa-solid fa-dumbbell"></i> Workouts</a>
+        </li>
+        <li class="nav-item">
+          <% if(title=="Create Workout") { %>
+            <a class="nav-link active" href="/create">
+          <% } else {%>
+            <a class="nav-link" href="/create">
+          <% } %>    
+            <i class="fa-brands fa-plus-circle"></i> Create Workout</a>
+        </li>
+        <li class="nav-item">
+          <% if(title=="Edit Workout") { %>
+            <a class="nav-link active" href="/edit/:id">
+          <% } else {%> 
+            <a class="nav-link" href="/edit/:id">
+          <% } %>  
+              <i class="fa-solid fa-edit"></i> Edit Workout</a>
+        </li>
+        <li class="nav-item">
+          <% if(title=="Delete Workout") { %>
+            <a class="nav-link active" href="/delete/:id">
+          <% } else {%>
+            <a class="nav-link" href="/delete/:id">
+          <% } %>  
+          <i class="fa-solid fa-trash"></i> Delete Workout</a>
+        </li>
+        <li class="nav-item"></li>
+        <% if(title=="Contact Us") { %>
+          <a class="nav-link active" href="/contactus">
+        <% } else {%>  
+          <a class="nav-link" href="/contactus">
+        <% } %> 
+        <i class="fa-solid fa-address-card"></i> ContactUs</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
