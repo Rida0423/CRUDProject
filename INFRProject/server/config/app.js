@@ -7,15 +7,19 @@ let logger = require('morgan');
 let app = express();
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let bookRouter = require('../routes/book');
+let bookRouter = require('../routes/workout');
 
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
+
+
 // getting-started.js
 const mongoose = require('mongoose');
 let DB = require('./db');
+
+
 // point mongoose to the DB URI
 mongoose.connect(DB.URI);
 let mongoDB = mongoose.connection;
@@ -42,7 +46,7 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/bookslist',bookRouter);
+app.use('/workouts',workoutRouter);
 // /project --> projectrouter
 // /contactus --> contactus
 
