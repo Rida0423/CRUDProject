@@ -1,7 +1,7 @@
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
-<!--Content for the edit Operation-->
-<div class="container"></div>
+<!--Content for the Edit Workout Operation-->
+<div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
@@ -11,25 +11,27 @@
                     <input type="text" class="form-control" id="workoutNameTextField" placeholder="Enter the Workout Name" name="Name" value="<%= Workout.Name %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="workoutDurationTextField">Workout Type</label>
-                    <input type="text" class="form-control" id="workoutTypeTextField" placeholder="Enter the Workout Tyoe (e.g.,Cardio,Strength)" name="Type" value="<%= Workout.Type %>" required>
+                    <label for="workoutTypeTextField">Workout Type</label>
+                    <input type="text" class="form-control" id="workoutTypeTextField" placeholder="Enter the Workout Type (e.g., Cardio, Strength)" name="Type" value="<%= Workout.Type %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="publishedTextField">Published</label>
-                    <input type="text" class="form-control" id="publishedTextField" placeholder="Enter the Published year" name="Published" value="<%= Book.Published %>" required>
+                    <label for="workoutDurationTextField">Duration (in minutes)</label>
+                    <input type="number" class="form-control" id="workoutDurationTextField" placeholder="Enter Duration" name="Duration" value="<%= Workout.Duration %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="descriptionTextArea">Book Description</label>
-                    <textarea type="text" class="form-control" id="descriptionTextArea"  placeholder="enter the Book Description" name="Description" required><%= Book.Description %></textarea>
+                    <label for="workoutDescriptionTextArea">Workout Description</label>
+                    <textarea type="text" class="form-control" id="workoutDescriptionTextArea" placeholder="Enter the Workout Description" name="Description" required><%= Workout.Description %></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="priceTextField">Price</label>
-                    <input type="text" class="form-control" id="priceTextField" placeholder="Book's Price" name="Price" value="<%= Book.Price %>" required>
+                    <label for="workoutIntensityTextField">Intensity</label>
+                    <input type="text" class="form-control" id="workoutIntensityTextField" placeholder="Enter the Workout Intensity (e.g., Low, Medium, High)" name="Intensity" value="<%= Workout.Intensity %>" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit
-                <i class="fas fa-edit"></i></button>  
-                <button class="btn btn-warning" type="submit">Cancel
-                    <i class="fas fa-undo"></i></button>    
+                    <i class="fas fa-edit"></i>
+                </button>  
+                <button class="btn btn-warning" type="button" onclick="window.history.back();">Cancel
+                    <i class="fas fa-undo"></i>
+                </button>    
             </form>
         </div>
     </div>
