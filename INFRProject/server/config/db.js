@@ -1,1 +1,1 @@
-module.exports={"URI":"mongodb://127.0.0.1:27017/WorkoutLib"}
+module.exports={"URI":"mongodb://localhost:27017/"}
