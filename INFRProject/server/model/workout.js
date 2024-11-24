@@ -2,14 +2,14 @@
 
 const mongoose = require("mongoose");
 
-let bookModel = mongoose.Schema({
+let workoutModel = mongoose.Schema({
     Name: String,
-    Author: String,
-    Published: String,
+    Duration: Number,
+    Type: String,
     Description: String,
-    Price: Number
+    CaloriesBurned: Number
 },
 {
-    collection:"Bio_books"
+    collection:"Workouts"
 });
-module.exports =mongoose.model('Book',bookModel);
+module.exports =mongoose.model('Workout',workoutModel);
