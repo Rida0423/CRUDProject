@@ -3,27 +3,35 @@ var router = express.Router();
 
 /* GET index page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home' });
+  res.render('index', { title: 'Workout Home' });
 });
-/* GET home page. */
-router.get('/home', function(req, res, next) {
-  res.render('index', { title: 'Home' });
+/* GET workout list page. */
+router.get('/workouts', function(req, res, next) {
+  res.render('workouts', { title: 'Workouts List' });
 });
-/* GET About page. */
-router.get('/aboutus', function(req, res, next) {
-  res.render('index', { title: 'About us' });
+
+
+/* GET workout details page. */
+router.get('/workout/:id', function(req, res, next) {
+  const workoutId = req.params.id;
+  res.render('workout', { title: `Workout ${workoutId} Details` });
 });
-/* GET products page. */
-router.get('/products', function(req, res, next) {
-  res.render('index', { title: 'Products' });
+
+/* GET create workout page. */
+router.get('/create', function(req, res, next) {
+  res.render('create', { title: 'Create New Workout' });
 });
-/* GET service page. */
-router.get('/service', function(req, res, next) {
-  res.render('index', { title: 'Service' });
+
+/* GET update workout page. */
+router.get('/edit/:id', function(req, res, next) {
+  const workoutId = req.params.id;
+  res.render('edit', { title: `Edit Workout ${workoutId}` });
 });
-/* GET contactus page. */
-router.get('/contactus', function(req, res, next) {
-  res.render('index', { title: 'Contact Us' });
+
+/* GET delete workout page. */
+router.get('/delete/:id', function(req, res, next) {
+  const workoutId = req.params.id;
+  res.render('delete', { title: `Delete Workout ${workoutId}` });
 });
 
 module.exports = router;

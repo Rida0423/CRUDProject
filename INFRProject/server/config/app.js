@@ -7,36 +7,27 @@ let logger = require('morgan');
 let app = express();
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let bookRouter = require('../routes/workout');
+let workoutRouter = require('../routes/workout'); // Correct naming here
 
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
-
-// getting-started.js
+// MongoDB Connection
 const mongoose = require('mongoose');
-let DB = require('./db');
-
+let DB = require('./db'); // Assuming DB is properly set
 
 // point mongoose to the DB URI
-mongoose.connect(DB.URI);
-let mongoDB = mongoose.connection;
-mongoDB.on('error',console.error.bind(console,'Connection Error'));
-mongoDB.once('open',()=>{
-  console.log("Connected with the MongoDB")
-});
-mongoose.connect(DB.URI,{useNewURIParser:true,useUnifiedTopology:true})
-/* main().catch(err => console.log(err));
+mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch(err => {
+    console.error("Connection Error:", err);
+  });
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/BookLib');
-  //await mongoose.connect('mongodb+srv://ahmedsheikh:Test123@cluster0.0f3pz.mongodb.net/');
-
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}*/
-
+// Middleware Setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,26 +35,23 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
+// Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/workouts',workoutRouter);
-// /project --> projectrouter
-// /contactus --> contactus
+app.use('/workouts', workoutRouter); // Workout route here
 
-// catch 404 and forward to error handler
+// Catch 404 errors
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
+  
   res.status(err.status || 500);
-  res.render('error',{title:'Error'});
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;
