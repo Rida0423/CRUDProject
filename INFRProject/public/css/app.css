@@ -1,0 +1,90 @@
+/* Basic styles for body */
+html, body {
+    height: 100%; /* Ensures the body takes the full height of the viewport */
+    margin: 0;
+    padding: 0;
+    color: #fff; /* White text color */
+    background: linear-gradient(to bottom, black, grey); /* Gradient background */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Arranges child elements in a column */
+}
+
+/* Header styles */
+header {
+    text-align: center; /* Centers text in the header */
+    padding: 20px;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #333; /* Same background color as header */
+}
+
+nav ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+    display: flex; /* Enables flexbox layout */
+    justify-content: center; /* Centers navigation items */
+}
+
+nav ul li {
+    margin: 0 15px; /* Adds space between each navigation item */
+}
+
+nav a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Removes underline from links */
+    font-size: 1.2em; /* Increases font size */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+}
+
+/* Main content area */
+main {
+    flex: 1; /* Allows the main content to grow and take available space */
+    display: flex; /* Enables flexbox layout for centering content */
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: center; /* Centers the content vertically */
+    align-items: center; /* Centers the content horizontally */
+    text-align: center; /* Centers text in the main section */
+}
+
+/* Project Images */
+.project-image {
+    max-width: 50%; /* Ensures image is responsive */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Centers the image */
+    margin: 20px auto; /* Adds margin around the image */
+}
+
+/* Footer styles */
+footer {
+    background-color: #333; /* Background color for the footer */
+    text-align: center; /* Center align the footer text */
+    padding: 10px; /* Padding for the footer */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) { /* Tablet */
+    nav ul {
+        flex-direction: column; /* Stacks the navigation links vertically */
+    }
+    nav ul li {
+        margin: 10px 0; /* Adds vertical space between navigation items */
+    }
+    .project-image {
+        max-width: 80%; /* Larger width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) { /* Mobile */
+    body {
+        font-size: 14px; /* Smaller font size for mobile devices */
+    }
+    .project-image {
+        max-width: 100%; /* Full width for mobile */
+    }
+}
