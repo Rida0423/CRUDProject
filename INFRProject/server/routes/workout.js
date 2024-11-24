@@ -1,113 +1,101 @@
-var express = require('express');
-var router = express.Router();
-let mongoose = require('mongoose');
-// Telling my router that I have this model
-let Workout = require('../model/workout'); // Make sure this points to your workout model
-const workoutController = require('../controllers/workout.js');
+const express = require('express');
+const router = express.Router();
+const Workout = require('../models/workout'); // Import the Workout model
 
-/* Get route for the workout list - Read Operation */
+// Get all workouts (Read operation)
 router.get('/', async (req, res, next) => {
   try {
-    const workoutList = await Workout.find();
-    res.render('workout/list', {
-      title: 'Workouts',
-      workoutList: workoutList
+    const workouts = await Workout.find(); // Fetch all workouts from the database
+    res.render('workout/list', { 
+      title: 'Workout List', 
+      workouts: workouts 
     });
   } catch (err) {
     console.error(err);
-    res.render('workout/list', {
-      error: 'Error on the server'
-    });
+    next(err);  // Pass error to the next middleware
   }
 });
 
-/* Create Operation --> Get route for displaying the Add Page */
-router.get('/add', async (req, res, next) => {
-  try {
-    res.render('workout/add', {
-      title: 'Add Workout'
-    });
-  } catch (err) {
-    console.error(err);
-    res.render('workout/list', {
-      error: 'Error on the server'
-    });
-  }
+// Get the Add workout form (Create operation)
+router.get('/add', (req, res) => {
+  res.render('workout/add', {
+    title: 'Add Workout'
+  });
 });
 
-/* Create Operation --> Post route for processing the Add Page */
+// Add a new workout (Create operation)
 router.post('/add', async (req, res, next) => {
   try {
-    let newWorkout = new Workout({
-      "Name": req.body.Name,
-      "Duration": req.body.Duration,
-      "Type": req.body.Type,
-      "Description": req.body.Description,
-      "CaloriesBurned": req.body.CaloriesBurned
+    // Create a new workout based on the form data
+    const newWorkout = new Workout({
+      Name: req.body.Name,
+      Duration: req.body.Duration,
+      Type: req.body.Type,
+      Description: req.body.Description,
+      CaloriesBurned: req.body.CaloriesBurned
     });
 
-    Workout.create(newWorkout).then(() => {
-      res.redirect('/workouts');
-    });
+    // Save the new workout to the database
+    await newWorkout.save();
+    res.redirect('/workouts');  // Redirect to the workout list page after saving
   } catch (err) {
     console.error(err);
-    res.render('workout/list', {
-      error: 'Error on the server'
+    res.render('workout/add', { 
+      title: 'Add Workout', 
+      error: 'Error while saving the workout' 
     });
   }
 });
 
-/* Update Operation --> Get route for displaying me the Edit Page */
+// Edit an existing workout (Update operation) --> Get route
 router.get('/edit/:id', async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const workoutToEdit = await Workout.findById(id);
+    const workoutToEdit = await Workout.findById(req.params.id);  // Find workout by ID
+    if (!workoutToEdit) {
+      return res.status(404).send('Workout not found');  // Handle case where workout is not found
+    }
     res.render('workout/edit', {
       title: 'Edit Workout',
       workout: workoutToEdit
     });
   } catch (err) {
     console.error(err);
-    next(err); // passing the error
+    next(err);  // Pass error to the next middleware
   }
 });
 
-/* Update Operation --> Post route for processing the Edit Page */
+// Process the update of a workout (Update operation) --> Post route
 router.post('/edit/:id', async (req, res, next) => {
   try {
-    let id = req.params.id;
-    let updatedWorkout = new Workout({
-      "_id": id,
-      "Name": req.body.Name,
-      "Duration": req.body.Duration,
-      "Type": req.body.Type,
-      "Description": req.body.Description,
-      "CaloriesBurned": req.body.CaloriesBurned
-    });
+    const updatedWorkout = {
+      Name: req.body.Name,
+      Duration: req.body.Duration,
+      Type: req.body.Type,
+      Description: req.body.Description,
+      CaloriesBurned: req.body.CaloriesBurned
+    };
 
-    Workout.findByIdAndUpdate(id, updatedWorkout).then(() => {
-      res.redirect('/workouts');
-    });
+    // Find the workout by ID and update it
+    await Workout.findByIdAndUpdate(req.params.id, updatedWorkout);
+    res.redirect('/workouts');  // Redirect to the workout list page after update
   } catch (err) {
     console.error(err);
-    res.render('workout/list', {
-      error: 'Error on the server'
+    res.render('workout/edit', { 
+      title: 'Edit Workout', 
+      error: 'Error while updating the workout' 
     });
   }
 });
 
-/* Delete Operation --> Get route to perform Delete Operation */
+// Delete a workout (Delete operation)
 router.get('/delete/:id', async (req, res, next) => {
   try {
-    let id = req.params.id;
-    Workout.deleteOne({ _id: id }).then(() => {
-      res.redirect('/workouts');
-    });
+    // Find the workout by ID and delete it
+    await Workout.findByIdAndDelete(req.params.id);
+    res.redirect('/workouts');  // Redirect to the workout list page after deletion
   } catch (err) {
     console.error(err);
-    res.render('workout/list', {
-      error: 'Error on the server'
-    });
+    next(err);  // Pass error to the next middleware
   }
 });
 
