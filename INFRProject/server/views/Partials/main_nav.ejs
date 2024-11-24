@@ -1,14 +1,14 @@
 <!--NavBar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">INFR3120 Project</a>
+      <a class="navbar-brand" href="/">Workout App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <% if(title=="Home") { %>
+            <% if(title=="Workout Home") { %>
               <a class="nav-link active" href="/home">
             <% } else {%>
               <a class="nav-link" href="/home">
@@ -16,36 +16,36 @@
             <i class="fa-solid fa-house-chimney-user"></i> Home</a>
           </li>
           <li class="nav-item">
-            <% if(title=="About us") { %>
-              <a class="nav-link active" href="/aboutus">
+            <% if(title=="Workouts List") { %>
+              <a class="nav-link active" href="/workouts">
             <% } else {%>
-              <a class="nav-link" href="/aboutus">  
+              <a class="nav-link" href="/workouts">  
             <% } %>       
-              <i class="fa-solid fa-circle-info"></i> AboutUs</a>
+              <i class="fa-solid fa-dumbbell"></i> Workouts</a>
           </li>
           <li class="nav-item">
-            <% if(title=="Products") { %>
-              <a class="nav-link active" href="/products">
+            <% if(title=="Create Workout") { %>
+              <a class="nav-link active" href="/create">
             <% } else {%>
-              <a class="nav-link" href="/products">
+              <a class="nav-link" href="/create">
             <% } %>    
-              <i class="fa-brands fa-elementor"></i> Products</a>
+              <i class="fa-brands fa-plus-circle"></i> Create Workout</a>
           </li>
           <li class="nav-item">
-            <% if(title=="Service") { %>
-              <a class="nav-link active" href="/service">
+            <% if(title=="Edit Workout") { %>
+              <a class="nav-link active" href="/edit/:id">
             <% } else {%> 
-              <a class="nav-link" href="/service">
+              <a class="nav-link" href="/edit/:id">
             <% } %>  
-                <i class="fa-solid fa-gears"></i> Service</a>
+                <i class="fa-solid fa-edit"></i> Edit Workout</a>
           </li>
           <li class="nav-item">
-            <% if(title=="Books") { %>
-              <a class="nav-link active" href="/bookslist">
+            <% if(title=="Delete Workout") { %>
+              <a class="nav-link active" href="/delete/:id">
             <% } else {%>
-              <a class="nav-link" href="/bookslist">
+              <a class="nav-link" href="/delete/:id">
             <% } %>  
-            <i class="fa-solid fa-book"></i> Books</a>
+            <i class="fa-solid fa-trash"></i> Delete Workout</a>
           </li>
           <li class="nav-item"></li>
           <% if(title=="Contact Us") { %>
