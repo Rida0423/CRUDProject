@@ -29,7 +29,8 @@ mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log("Connected to MongoDB");
   })
   .catch(err => {
-    console.error("Connection Error:", err);
+    console.error("Connection Error:", err.message);
+    process.exit(1); // Exit if there is a connection error
   });
 
 // Middleware Setup
