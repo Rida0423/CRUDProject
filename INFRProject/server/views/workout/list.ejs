@@ -1,37 +1,35 @@
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
-<!--Book Database-->
+<!--Workout Database-->
 <main class="container">
     <div class="row">
         <div class="offset-md-1 col-md-10">
             <h1><%= title %></h1>
             <br>
-            <a href="/workouts/add" class="btn btn-primary" role="button">
+            <a href="/workoutslist/add" class="btn btn-primary" role="button">
                 <i class="fas fa-plus-circle"></i> Add Workout
             </a>
             <table class="table table-bordered table-striped table-hover">
                 <tr class="d-flex">
-                    <th class="text-center col-2">Name</th>
-                    <th class="text-center col-2">Type</th>
-                    <th class="text-center col-1">Duration(min)</th>
+                    <th class="text-center col-2">Title</th>
+                    <th class="text-center col-2">Duration</th>
+                    <th class="text-center col-1">Type</th>
                     <th class="col-4">Description</th>
-                    <th class="text-center col-1">Intensity</th>
                 </tr>
                 <% for(let count=0;count<WorkoutList.length;count++) { %>
                 <tr class="d-flex">
-                    <td class="text-center col-2"><%= WorkoutList[count].Name %></td>
-                    <td class="text-center col-2"><%= WorkoutList[count].Type %></td>
-                    <td class="text-center col-1"><%=WorkoutList[count].Duration%></td>
+                    <td class="text-center col-2"><%= WorkoutList[count].Title %></td>
+                    <td class="text-center col-2"><%= WorkoutList[count].Duration %></td>
+                    <td class="text-center col-1"><%= WorkoutList[count].Type%></td>
                     <td class="col-4"><%= WorkoutList[count].Description %> </td>
-                    <td class="text-center col-1"><%= WorkoutList[count].Intensity %></td>
                     <td class="text-center col-1">
-                        <a href="/workouts/edit/<%= WorkoutList[count]._id%>"
+                        <a href="/workoutslist/edit/<%= WorkoutList[count]._id%>"
                             class="btn btn-primary btn-sm">
                         <i class="fas fa-pencil-alt"></i>Edit
                     </a>
                     </td>
                     <td class="text-center col-1">
-                        <a href="/workouts/delete/<%= WorkoutList[count]._id%>"
+                        <a href="/workoutslist/delete/<%= WorkoutList[count]._id%>"
                             class="btn btn-danger btn-sm">
                         <i class="fas fa-trash-alt"></i>Delete
                     </a>
